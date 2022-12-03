@@ -499,5 +499,27 @@ public class dbConnection {
 		}
 		return null;		
 	}
+	public  void updateSlotStatus(String emailId, String scheduleDate, String scheduleStartTime, String scheduleEndTime )
+	{
+		Connection cons=databaseConnection();
+		String query = "update slotavailable set interviewerStatus = 'BOOKED' where interviewerEmailId= ? and interviewDate = ? and startTime = ? and endTime = ?";
+		
+		PreparedStatement ps;
+		try {
+			ps = cons.prepareStatement(query);
+		
+		ps.setString(1, emailId);
+		ps.setString(2, scheduleDate);
+		ps.setString(3, scheduleStartTime);
+		ps.setString(4, scheduleEndTime);
+		ps.executeUpdate();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 }

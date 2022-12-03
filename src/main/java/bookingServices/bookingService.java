@@ -192,6 +192,8 @@ public class bookingService extends slotBookingImplBase{
 			}
 			
 			ResultSet rs=connect.addInterview(book);
+		connect.updateSlotStatus(request.getInterviewerEmailId(), request.getDate(), request.getStartTime(), request.getEndTime());
+			
 			
 			List<booking> slotDetails = new ArrayList<booking>();
 			
